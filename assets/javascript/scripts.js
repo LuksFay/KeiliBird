@@ -16,18 +16,7 @@ let personaje = {
     w:50,
     h:50
 }
-let gameOver = {
-    x:50,
-    y:100,
-    w:150,
-    h:150
-}
-let play = {
-    x:50,
-    y:200,
-    w:150,
-    h:150
-}
+
 let tuberias = new Array()
 tuberias[0] ={
     x: contexto.width,
@@ -52,12 +41,6 @@ tuberiaSur.src = 'resources/imagenes/tuberiaSur.png'
 
 let suelo = new Image()
 suelo.src = 'resources/imagenes/suelo.png'
-
-// let gameOver = new Image()
-// gameOver = 'resources/imagenes/gameover.png'
-
-// let play = new Image()
-// play = 'resources/imagenes/play.png'
    
 // CONTROL
 function presionar(){
@@ -75,15 +58,16 @@ function resize(){
     
 }
 
-// //reBUCLE
-// function rePlay(){
-//     location.reload()
-// }
+//reBUCLE
+function rePlay(){
+    location.reload()
+}
 //MENU GAME OVER
-// function lose(){
-//     ctx.drawImage(gameOver,gameOver.x,gameOver.y)
-//     ctx.drawImage(play,gameOver.x,gameOver.y)
-// }
+function lose(){
+   
+    alert(`Game Over! Score: ${score}`)
+    rePlay()
+}
 
 //BUCLE
 setInterval(loop, 1000/FPS)
@@ -116,7 +100,7 @@ function loop() {
              (personaje.y <= tuberias[i].y + tuberiaNorte.height ||
                 personaje.y + bird.height >= tuberias[i].y + constante)
                 || personaje.y + bird.height >= contexto.height - suelo.height){
-            location.reload()
+            return lose()
             
         }
         if(tuberias[i].x == personaje.x){
@@ -127,12 +111,12 @@ function loop() {
 
     //CONDICIONES
     personaje.y += gravedad
-    ctx.fillStyle = 'rgba(0,0,0,1)'
-    ctx.font = '25px Arial'
-    ctx.fillText('Score: '+score,10,contexto.height-40)
+    ctx.fillStyle = '#fff'
+    ctx.font = '25px VT323, monospace'
+    ctx.fillText('Score: '+score,200,contexto.height-500)
 }
 
 //EVENTOS
 window.addEventListener('resize', resize)
-window.addEventListener('keydown', presionar)
-// play.addEventListener('click', rePlay())
+window.addEventListener('click', presionar)
+jugar.addEventListener('click', rePlay)
