@@ -25,6 +25,8 @@ tuberias[0] ={
 //AUDIOS
 let punto = new Audio()
 punto.src = 'resources/audios/punto.mp3'
+let perder = new Audio()
+perder.src = 'resources/audios/perder.mp3'
 
 //IMAGENES
 let bird = new Image()
@@ -64,7 +66,7 @@ function rePlay(){
 }
 //MENU GAME OVER
 function lose(){
-   
+    perder.play()
     alert(`Game Over! Score: ${score}`)
     rePlay()
 }
