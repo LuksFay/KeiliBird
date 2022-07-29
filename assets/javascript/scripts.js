@@ -66,8 +66,8 @@ function rePlay(){
 }
 //MENU GAME OVER
 function lose(){
+   // alert(`Game Over! Score: ${score}`)
     perder.play()
-    alert(`Game Over! Score: ${score}`)
     rePlay()
 }
 
